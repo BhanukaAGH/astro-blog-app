@@ -5,7 +5,7 @@ author: 'Alec Whitten'
 description: 'JavaScript frameworks make development easy with extensive features and functionalities.'
 image: {
   src: "/images/post-3.png",
-  alt: "A picture of a blog",
+  alt: "Our top 10 Javascript frameworks to use",
 }
 draft: false
 category: ['Product', 'Management', 'Research']

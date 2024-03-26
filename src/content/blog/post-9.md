@@ -5,7 +5,7 @@ author: 'Drew Cano'
 description: 'The rise of RESTful APIs has been met by a rise in tools for creating, testing, and management'
 image: {
   src: "/images/post-9.png",
-  alt: "A picture of a blog",
+  alt: "Building your API Stack",
 }
 draft: false
 category: ['Design','Research']

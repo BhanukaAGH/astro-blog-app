@@ -5,7 +5,7 @@ author: 'Orlando Diggs'
 description: 'A grid system is a design tool used to arrange content on a webpage. It is a series of vertical and horizontal lines that create a matrix of intersecting points, which can be used to align and organize page elements. Grid systems are used to create a consistent look and feel across a website, and can help to make the layout more visually appealing and easier to navigate.'
 image: {
   src: "/images/post-8.png",
-  alt: "A picture of a blog",
+  alt: "Grid system for better Design User Interface",
 }
 draft: false
 category: ['Product','Management','Leadership']

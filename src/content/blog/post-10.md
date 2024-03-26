@@ -5,7 +5,7 @@ author: 'Alec Whitten'
 description: 'Linear helps streamline software projects, sprints, tasks, and bug tracking. Here’s how to get'
 image: {
   src: "/images/post-10.png",
-  alt: "A picture of a blog",
+  alt: "Migrating to Linear 101",
 }
 draft: false
 category: ['Product','Research']

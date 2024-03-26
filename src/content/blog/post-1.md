@@ -5,7 +5,7 @@ author: 'Demi WIlkinson'
 description: 'Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.'
 image: {
   src: "/images/post-1.png",
-  alt: "A picture of a blog",
+  alt: "Markdown Style Guide",
 }
 draft: false
 category: [Design, Frameworks]

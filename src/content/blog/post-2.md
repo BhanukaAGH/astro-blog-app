@@ -5,7 +5,7 @@ author: 'Candice Wu'
 description: 'How do you create compelling presentations that wow your colleagues and impress your managers?'
 image: {
   src: "/images/post-2.png",
-  alt: "A picture of a blog",
+  alt: "UX review presentations",
 }
 draft: false
 category: ['Design','Leadership','Research']

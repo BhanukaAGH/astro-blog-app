@@ -5,7 +5,7 @@ author: 'Orlando Diggs'
 description: 'Starting a community doesn’t need to be complicated, but how do you get started?'
 image: {
   src: "/images/post-4.png",
-  alt: "A picture of a blog",
+  alt: "Podcast: Creating a better CX Community",
 }
 draft: false
 category: ['Design','Frameworks','Research']

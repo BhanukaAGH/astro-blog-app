@@ -5,7 +5,7 @@ author: 'Demi WIlkinson'
 description: 'Mental models are simple expressions of complex processes or relationships.'
 image: {
   src: "/images/post-7.png",
-  alt: "A picture of a blog",
+  alt: "PM mental models",
 }
 draft: false
 category: ['Management','Leadership','Research']

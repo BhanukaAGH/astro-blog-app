@@ -5,7 +5,7 @@ author: 'Drew Cano'
 description: 'Introduction to Wireframing and its Principles. Learn from the best in the industry.'
 image: {
   src: "/images/post-5.png",
-  alt: "A picture of a blog",
+  alt: "What is Wireframing?",
 }
 draft: false
 category: ['Leadership','Research']

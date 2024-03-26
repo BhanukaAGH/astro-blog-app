@@ -7,14 +7,16 @@ const { pathname } = Astro.url
 
 <header class='flex flex-col items-center gap-12 py-5 lg:py-7'>
   <nav class='flex items-center justify-between w-full'>
-    <Icon name='logo' class='size-8 text-black dark:text-white' />
+    <a href='/' aria-label='logo'>
+      <Icon name='logo' class='size-8 text-black dark:text-white' />
+    </a>
     <Icon
       id='mobile-menu'
       name='tabler:menu-2'
       class='size-8 text-black dark:text-white block sm:hidden cursor-pointer'
     />
     <div class='hidden sm:flex items-center gap-5 text-lg'>
-      <a href='/'>Blog</a>
+      <a href='/blog'>Blog</a>
       <a href='/about'>About</a>
       <ThemeToggle client:only />
     </div>
@@ -44,10 +46,12 @@ const { pathname } = Astro.url
   class='hidden sm:hidden inset-0 bg-white dark:bg-black z-10'
 >
   <div class='flex flex-col items-center justify-center h-full gap-y-12'>
-    <Icon name='logo' class='size-8 text-black dark:text-white' />
+    <a href='/' aria-label='logo'>
+      <Icon name='logo' class='size-8 text-black dark:text-white' />
+    </a>
 
     <div class='flex flex-col items-center gap-y-6 text-lg'>
-      <a href='/'>Blog</a>
+      <a href='/blog'>Blog</a>
       <a href='/about'>About</a>
       <ThemeToggle client:only />
     </div>
@@ -75,18 +79,5 @@ const { pathname } = Astro.url
     document.documentElement.classList.remove('overflow-hidden')
     mobileHeader?.classList.remove('absolute')
     mobileHeader?.classList.add('hidden')
-  })
-
-  // Remove click listeners
-  close?.removeEventListener('click', () => {
-    document.documentElement.classList.remove('overflow-hidden')
-    mobileHeader?.classList.remove('absolute')
-    mobileHeader?.classList.add('hidden')
-  })
-
-  mobileMenu?.removeEventListener('click', () => {
-    document.documentElement.classList.add('overflow-hidden')
-    mobileHeader?.classList.remove('hidden')
-    mobileHeader?.classList.add('absolute')
   })
 </script>

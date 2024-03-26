@@ -5,7 +5,7 @@ author: 'Natali Craig'
 description: 'Like to know the secrets of transforming a 2-14 team into a 3x Super Bowl winning Dynasty?'
 image: {
   src: "/images/post-6.png",
-  alt: "A picture of a blog",
+  alt: "Bill Walsh leadership lessons",
 }
 draft: false
 category: ['Frameworks','Research']

@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content'
 
 import Pagination from './Pagination.astro'
 import PostCard from './PostCard.astro'
+import { Icon } from 'astro-icon/components'
 
 const posts = await getCollection('blog')
 let currentPage = 0
@@ -19,4 +20,9 @@ let currentPage = 0
   }
 </div>
 
-<Pagination />
+<a
+  href='/blog'
+  class='mt-5 text-center flex items-center mx-auto w-fit bg-purple-50 text-purple-500 rounded-md px-4 py-2 gap-1'
+  ><span class='text-sm font-medium'>View All Blog Posts</span>
+</a>
+<!-- <Pagination /> -->
