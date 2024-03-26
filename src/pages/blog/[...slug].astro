@@ -1,0 +1,71 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content'
+import Layout from '../../layouts/Layout.astro'
+import PostCard from '../../components/PostCard.astro'
+import { Image } from 'astro:assets'
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog')
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }))
+}
+type Props = CollectionEntry<'blog'>
+
+const post = Astro.props
+const { title, date, image, author, category } = post.data
+const { Content } = await post.render()
+---
+
+<Layout title={`Blog | ${title}`}>
+  <div class='grid grid-cols-3 gap-x-8 pb-8'>
+    <div class='col-span-3 lg:col-span-2'>
+      <span class='font-semibold text-sm text-purple-700'
+        >{author} • {date}</span
+      >
+      <h1 class='text-4xl font-bold pb-8 pt-4'>{title}</h1>
+      <Image
+        src={image.src}
+        alt={image.alt}
+        width={1200}
+        height={490}
+        class={'w-full object-cover'}
+      />
+      <div
+        class='prose prose-lg prose-img:w-full dark:prose-invert w-full max-w-none py-8'
+      >
+        <Content />
+      </div>
+
+      <div class='flex items-center flex-wrap gap-2'>
+        <p
+          class='text-purple-500 font-medium text-sm rounded-full bg-purple-50 dark:bg-purple-100 px-2.5 py-0.5'
+        >
+          Leadership
+        </p>
+        <p
+          class='text-cyan-500 font-medium text-sm rounded-full bg-cyan-50 dark:bg-cyan-50 px-2.5 py-0.5'
+        >
+          Leadership
+        </p>
+        <p
+          class='text-orange-500 font-medium text-sm rounded-full bg-orange-50 dark:bg-orange-50 px-2.5 py-0.5'
+        >
+          Frameworks
+        </p>
+      </div>
+    </div>
+
+    <div class='hidden lg:block lg:col-span-1'>
+      <h2 class='font-semibold text-2xl pb-8'>Recent blog posts</h2>
+      <div class='flex flex-col gap-8'>
+        <PostCard />
+        <PostCard />
+        <PostCard />
+        <PostCard />
+        <PostCard />
+      </div>
+    </div>
+  </div>
+</Layout>
