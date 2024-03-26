@@ -1,5 +1,7 @@
 ---
 import { Image } from 'astro:assets'
+
+import postImage from '../assets/image.png'
 interface Props {
   direction?: 'vertical' | 'horizontal'
   classes?: string
@@ -13,7 +15,7 @@ const { direction = 'vertical', classes, lineClamp = 2 } = Astro.props
   class={`@container flex ${direction === 'vertical' ? 'flex-col gap-8' : 'gap-x-6'} w-full`}
 >
   <Image
-    src='/public/images/image.png'
+    src={postImage}
     alt={'blog-post'}
     class={`w-full ${
       direction === 'horizontal'

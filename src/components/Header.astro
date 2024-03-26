@@ -1,6 +1,8 @@
 ---
 import { Icon } from 'astro-icon/components'
 import ThemeToggle from './ThemeToggle'
+
+const { pathname } = Astro.url
 ---
 
 <header class='flex flex-col items-center gap-12 py-5 lg:py-7'>
@@ -20,11 +22,20 @@ import ThemeToggle from './ThemeToggle'
   </nav>
 
   <div class='w-full border-y border-black dark:border-white'>
-    <h1
-      class='text-[18vw] md:text-[19vw] lg:text-[18vw] xl:text-[17vw] 2xl:text-[14vw] leading-none font-bold text-center -translate-y-1 sm:-translate-y-2 lg:-translate-y-4 pointer-events-none'
-    >
-      THE BLOG
-    </h1>
+    {
+      pathname === '/' && (
+        <h1 class='text-[18vw] md:text-[19vw] lg:text-[18vw] xl:text-[17vw] 2xl:text-[14vw] leading-none font-bold text-center -translate-y-1 sm:-translate-y-2 lg:-translate-y-4 pointer-events-none'>
+          THE BLOG
+        </h1>
+      )
+    }
+    {
+      pathname === '/about' && (
+        <h1 class='text-[17vw] md:text-[18vw] lg:text-[17vw] xl:text-[16vw] 2xl:text-[12vw] leading-none font-bold text-center -translate-y-1 sm:-translate-y-2 lg:-translate-y-4 pointer-events-none'>
+          JOHN DOE
+        </h1>
+      )
+    }
   </div>
 </header>
 
@@ -66,5 +77,18 @@ import ThemeToggle from './ThemeToggle'
     document.documentElement.classList.remove('overflow-hidden')
     mobileHeader?.classList.remove('absolute')
     mobileHeader?.classList.add('hidden')
+  })
+
+  // Remove click listeners
+  close?.removeEventListener('click', () => {
+    document.documentElement.classList.remove('overflow-hidden')
+    mobileHeader?.classList.remove('absolute')
+    mobileHeader?.classList.add('hidden')
+  })
+
+  mobileMenu?.removeEventListener('click', () => {
+    document.documentElement.classList.add('overflow-hidden')
+    mobileHeader?.classList.remove('hidden')
+    mobileHeader?.classList.add('absolute')
   })
 </script>
