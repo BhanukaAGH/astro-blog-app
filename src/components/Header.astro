@@ -6,7 +6,12 @@ import ThemeToggle from './ThemeToggle'
 <header class='flex flex-col items-center gap-12 py-5 lg:py-7'>
   <nav class='flex items-center justify-between w-full'>
     <Icon name='logo' class='size-8 text-black dark:text-white' />
-    <div class='flex items-center gap-5 text-lg'>
+    <Icon
+      id='mobile-menu'
+      name='tabler:menu-2'
+      class='size-8 text-black dark:text-white block sm:hidden cursor-pointer'
+    />
+    <div class='hidden sm:flex items-center gap-5 text-lg'>
       <a href='/'>Blog</a>
       <a href='/authors'>Authors</a>
       <a href='/about'>About</a>
@@ -22,3 +27,44 @@ import ThemeToggle from './ThemeToggle'
     </h1>
   </div>
 </header>
+
+<!-- Mobile Header -->
+<header
+  id='mobile-header'
+  class='hidden sm:hidden inset-0 bg-white dark:bg-black z-10'
+>
+  <div class='flex flex-col items-center justify-center h-full gap-y-12'>
+    <Icon name='logo' class='size-8 text-black dark:text-white' />
+
+    <div class='flex flex-col items-center gap-y-6 text-lg'>
+      <a href='/'>Blog</a>
+      <a href='/authors'>Authors</a>
+      <a href='/about'>About</a>
+      <ThemeToggle client:only />
+    </div>
+  </div>
+
+  <Icon
+    id='close-icon'
+    name='tabler:letter-x'
+    class='absolute inset-x-0 mx-auto bottom-4 size-6 text-black dark:text-white cursor-pointer'
+  />
+</header>
+
+<script>
+  let close = document.querySelector('#close-icon')
+  let mobileHeader = document.querySelector('#mobile-header')
+  let mobileMenu = document.querySelector('#mobile-menu')
+
+  mobileMenu?.addEventListener('click', () => {
+    document.documentElement.classList.add('overflow-hidden')
+    mobileHeader?.classList.remove('hidden')
+    mobileHeader?.classList.add('absolute')
+  })
+
+  close?.addEventListener('click', () => {
+    document.documentElement.classList.remove('overflow-hidden')
+    mobileHeader?.classList.remove('absolute')
+    mobileHeader?.classList.add('hidden')
+  })
+</script>
