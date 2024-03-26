@@ -12,7 +12,7 @@ interface Props {
 }
 
 const { direction = 'vertical', classes, lineClamp = 2, post } = Astro.props
-const { title, description, image, author, category, date } = post.data
+const { title, description, image, author, tags, publishedDate } = post.data
 ---
 
 <a
@@ -34,7 +34,11 @@ const { title, description, image, author, category, date } = post.data
   <div class:list={['flex flex-col gap-6 w-full', classes]}>
     <div class='@container flex flex-col gap-3'>
       <span class='font-semibold text-sm text-purple-700'
-        >{author} • {date}</span
+        >{author} • {
+          new Date(publishedDate).toLocaleDateString('en-US', {
+            dateStyle: 'medium',
+          })
+        }</span
       >
       <h1 class='@sm:text-2xl font-semibold text-lg'>{title}</h1>
 
@@ -46,7 +50,7 @@ const { title, description, image, author, category, date } = post.data
     </div>
 
     <div class='flex items-center flex-wrap gap-2'>
-      {category.map((c: any) => <CategoryBadge label={c} />)}
+      {tags.map((c: any) => <CategoryBadge label={c} />)}
     </div>
   </div>
 </a>

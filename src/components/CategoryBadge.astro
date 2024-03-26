@@ -1,8 +1,6 @@
 ---
-import type { InferEntrySchema } from 'astro:content'
-
 interface Props {
-  label: InferEntrySchema<'blog'>['category'][number]
+  label: string
 }
 
 const { label } = Astro.props
