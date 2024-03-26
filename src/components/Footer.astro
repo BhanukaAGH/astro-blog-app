@@ -1,0 +1,23 @@
+---
+import { Icon } from 'astro-icon/components'
+---
+
+<footer
+  class='flex flex-col sm:flex-row gap-1 items-center justify-between py-7 text-xl'
+>
+  <small>
+    Copyright &copy; <span id='copyright'></span> | All rights reserved
+  </small>
+  <small>
+    <a href='/rss.xml' class='flex items-center gap-1'>
+      Subscribe to RSS
+      <Icon name='tabler:rss' width={20} height={20} />
+    </a>
+  </small>
+</footer>
+
+<script>
+  document.querySelector('#copyright')!.textContent = new Date()
+    .getFullYear()
+    .toString()
+</script>

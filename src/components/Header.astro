@@ -1,0 +1,24 @@
+---
+import { Icon } from 'astro-icon/components'
+import ThemeToggle from './ThemeToggle'
+---
+
+<header class='flex flex-col items-center gap-12 py-5 lg:py-7'>
+  <nav class='flex items-center justify-between w-full'>
+    <Icon name='logo' class='size-8 text-black dark:text-white' />
+    <div class='flex items-center gap-5 text-lg'>
+      <a href='/'>Blog</a>
+      <a href='/authors'>Authors</a>
+      <a href='/about'>About</a>
+      <ThemeToggle client:only />
+    </div>
+  </nav>
+
+  <div class='w-full border-y border-black dark:border-white'>
+    <h1
+      class='text-[18vw] md:text-[19vw] lg:text-[18vw] xl:text-[17vw] 2xl:text-[14vw] leading-none font-bold text-center -translate-y-1 sm:-translate-y-2 lg:-translate-y-4 pointer-events-none'
+    >
+      THE BLOG
+    </h1>
+  </div>
+</header>
