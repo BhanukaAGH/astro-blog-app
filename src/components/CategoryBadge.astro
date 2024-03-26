@@ -1,0 +1,38 @@
+---
+import type { InferEntrySchema } from 'astro:content'
+
+interface Props {
+  label: InferEntrySchema<'blog'>['category'][number]
+}
+
+const { label } = Astro.props
+let color = 'text-violet-500 bg-violet-50 dark:bg-violet-100'
+
+if (label === 'Leadership') {
+  color = 'text-green-500 bg-green-50 dark:bg-green-100'
+}
+if (label === 'Management') {
+  color = 'rose'
+  color = 'text-rose-500 bg-rose-50 dark:bg-rose-100'
+}
+if (label === 'Product') {
+  color = 'teal'
+  color = 'text-teal-500 bg-teal-50 dark:bg-teal-100'
+}
+if (label === 'Research') {
+  color = 'purple'
+  color = 'text-purple-500 bg-purple-50 dark:bg-purple-100'
+}
+if (label === 'Design') {
+  color = 'cyan'
+  color = 'text-cyan-500 bg-cyan-50 dark:bg-cyan-100'
+}
+if (label === 'Frameworks') {
+  color = 'orange'
+  color = 'text-orange-500 bg-orange-50 dark:bg-orange-100'
+}
+---
+
+<p class:list={['font-medium text-sm rounded-full  px-2.5 py-0.5', color]}>
+  {label}
+</p>

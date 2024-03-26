@@ -1,25 +1,10 @@
 ---
-import Pagination from '../components/Pagination.astro'
-import PostCard from '../components/PostCard.astro'
 import RecentPost from '../components/RecentPost.astro'
 import Layout from '../layouts/Layout.astro'
+import AllBlogPost from '../components/AllBlogPost.astro'
 ---
 
 <Layout title='Welcome to Astro.'>
-  <main>
-    <RecentPost />
-
-    <h2 class='font-semibold text-2xl pb-8 pt-7'>All blog posts</h2>
-    <div
-      class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12 pb-8 border-b border-gray-200 dark:border-gray-500'
-    >
-      {
-        Array(6)
-          .fill('')
-          .map((i) => <PostCard />)
-      }
-    </div>
-
-    <Pagination />
-  </main>
+  <RecentPost />
+  <AllBlogPost />
 </Layout>

@@ -1,5 +1,9 @@
 ---
+import { getCollection } from 'astro:content'
+
 import PostCard from './PostCard.astro'
+
+const posts = await getCollection('blog')
 ---
 
 <h2 class='font-semibold text-2xl pb-8'>Recent blog posts</h2>
@@ -7,28 +11,35 @@ import PostCard from './PostCard.astro'
 <!-- Desktop & Tab -->
 <div class='hidden md:grid grid-cols-2 gap-x-8 gap-y-8'>
   <div class='col-span-2 xl:col-span-1 row-span-1 xl:row-span-2 max-h-fit'>
-    <PostCard />
+    <PostCard post={posts[0]} />
   </div>
   <div class='col-span-2 xl:col-span-1 row-span-1 max-h-fit'>
-    <PostCard direction='horizontal' classes='w-3/4' lineClamp={4} />
+    <PostCard
+      post={posts[1]}
+      direction='horizontal'
+      classes='w-3/4'
+      lineClamp={4}
+    />
   </div>
   <div class='col-span-2 xl:col-span-1 row-span-1 max-h-fit'>
-    <PostCard direction='horizontal' classes='w-3/4' lineClamp={4} />
+    <PostCard
+      post={posts[2]}
+      direction='horizontal'
+      classes='w-3/4'
+      lineClamp={4}
+    />
   </div>
   <div class='hidden xl:block col-span-2 row-span-1 py-7'>
-    <PostCard direction='horizontal' lineClamp={5} />
+    <PostCard post={posts[3]} direction='horizontal' lineClamp={5} />
   </div>
   <div
     class='block xl:hidden col-span-2 xl:col-span-1 row-span-1 xl:row-span-2 max-h-fit pt-4 pb-7'
   >
-    <PostCard />
+    <PostCard post={posts[3]} />
   </div>
 </div>
 
 <!-- Mobile -->
 <div class='flex md:hidden flex-col gap-y-8 pb-7'>
-  <PostCard />
-  <PostCard />
-  <PostCard />
-  <PostCard />
+  {posts.map((post) => <PostCard post={post} />)}
 </div>

@@ -1,22 +1,27 @@
 ---
 import { Image } from 'astro:assets'
+import type { CollectionEntry } from 'astro:content'
 
-import postImage from '../assets/image.png'
+import CategoryBadge from './CategoryBadge.astro'
+
 interface Props {
   direction?: 'vertical' | 'horizontal'
   classes?: string
   lineClamp?: number
+  post: CollectionEntry<'blog'>
 }
 
-const { direction = 'vertical', classes, lineClamp = 2 } = Astro.props
+const { direction = 'vertical', classes, lineClamp = 2, post } = Astro.props
+const { title, description, image, author, category, date } = post.data
 ---
 
-<div
+<a
+  href={`/blog/${post.slug}`}
   class={`@container flex ${direction === 'vertical' ? 'flex-col gap-8' : 'gap-x-6'} w-full`}
 >
   <Image
-    src={postImage}
-    alt={'blog-post'}
+    src={image.src}
+    alt={image.alt}
     class={`w-full ${
       direction === 'horizontal'
         ? 'aspect-video'
@@ -29,37 +34,19 @@ const { direction = 'vertical', classes, lineClamp = 2 } = Astro.props
   <div class:list={['flex flex-col gap-6 w-full', classes]}>
     <div class='@container flex flex-col gap-3'>
       <span class='font-semibold text-sm text-purple-700'
-        >Demi Wllkinson • 1 Jan 2023</span
+        >{author} • {date}</span
       >
-      <h1 class='@sm:text-2xl font-semibold text-lg'>PM mental models</h1>
+      <h1 class='@sm:text-2xl font-semibold text-lg'>{title}</h1>
 
       <p
         class={`text-base text-gray-500 dark:text-gray-400 ${lineClamp == 2 ? 'line-clamp-2' : lineClamp == 4 ? 'line-clamp-4' : 'line-clamp-6'}`}
       >
-        Mental models are simple expressions of complex processes or
-        relationships. Mental models are simple expressions of complex processes
-        or relationships. Mental models are simple expressions of complex
-        processes or relationships. Mental models are simple expressions of
-        complex processes or relationships.
+        {description}
       </p>
     </div>
 
     <div class='flex items-center flex-wrap gap-2'>
-      <p
-        class='text-purple-500 font-medium text-sm rounded-full bg-purple-50 dark:bg-purple-100 px-2.5 py-0.5'
-      >
-        Leadership
-      </p>
-      <p
-        class='text-cyan-500 font-medium text-sm rounded-full bg-cyan-50 dark:bg-cyan-50 px-2.5 py-0.5'
-      >
-        Leadership
-      </p>
-      <p
-        class='text-orange-500 font-medium text-sm rounded-full bg-orange-50 dark:bg-orange-50 px-2.5 py-0.5'
-      >
-        Frameworks
-      </p>
+      {category.map((c: any) => <CategoryBadge label={c} />)}
     </div>
   </div>
-</div>
+</a>

@@ -1,0 +1,22 @@
+---
+import { getCollection } from 'astro:content'
+
+import Pagination from './Pagination.astro'
+import PostCard from './PostCard.astro'
+
+const posts = await getCollection('blog')
+let currentPage = 0
+---
+
+<h2 class='font-semibold text-2xl pb-8 pt-7'>All blog posts</h2>
+<div
+  class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12 pb-8 border-b border-gray-200 dark:border-gray-500'
+>
+  {
+    posts
+      .slice(6 * currentPage, 6 * (currentPage + 1))
+      .map((post) => <PostCard post={post} />)
+  }
+</div>
+
+<Pagination />

@@ -18,6 +18,7 @@ const blog = defineCollection({
       'Drew Cano',
       'Natali Craig',
     ]),
+    description: z.string(),
     image: z.object({
       src: z.string(),
       alt: z.string(),

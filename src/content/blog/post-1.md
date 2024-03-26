@@ -1,9 +1,10 @@
 ---
-title: Markdown Style Guide
+title: 'Markdown Style Guide'
 date: 2022-11-20
-author: Demi WIlkinson
+author: 'Demi WIlkinson'
+description: 'Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.'
 image: {
-  src: "/blog-placeholder.jpg",
+  src: "/images/post-1.png",
   alt: "A picture of a blog",
 }
 draft: false
@@ -44,7 +45,7 @@ Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sap
 
 #### Output
 
-![blog placeholder](/blog-placeholder.jpg)
+![blog placeholder](/images/post-3.png)
 
 ## Blockquotes
 
