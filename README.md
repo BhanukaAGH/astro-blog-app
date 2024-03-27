@@ -1,54 +1,51 @@
-# Astro Starter Kit: Basics
+# Astro Blog App
 
-```sh
-npm create astro@latest -- --template basics
+This is a simple blog app created by Astro framework and integrated with Keystatic CMS for efficient content management. It offers a streamlined experience for creating, managing blog posts.
+
+## Features
+
+- Create new blog posts effortlessly using the intuitive interface.
+- Manage and edit existing posts conveniently through Keystatic CMS integration.
+- Customize the blog app further to suit your preferences and needs.
+
+## Prerequisites
+
+Before getting started, ensure you have the following prerequisites installed on your machine:
+
+- Node.js
+- pnpm (If you don't have pnpm installed, you can install it by running `npm install -g pnpm`)
+
+## Setup
+
+To set up this blog app locally, follow these steps:
+
+1. Clone this repository to your local machine:
+
+ ```bash
+git clone https://github.com/BhanukaAGH/astro-blog-app.git
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+2. Navigate to the project directory:
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+ ```bash
+cd astro-blog-app
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+3. Install dependencies:
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+ ```bash
+pnpm install
+```
 
-Any static assets, like images, can be placed in the `public/` directory.
+4. Set up Keystatic CMS integration:
 
-## 🧞 Commands
+Open keystatic.config.ts file.
+Update the repoOwner and repoName fields with your GitHub username and the name of your repository, respectively.
 
-All commands are run from the root of the project, from a terminal:
+5. Start the development server:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+ ```bash
+pnpm dev
+```
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Access the blog app in your browser at `http://localhost:4321`.
