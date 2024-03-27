@@ -5,17 +5,20 @@ import { getCollection } from 'astro:content'
 import Layout from '../../layouts/Layout.astro'
 import PostCard from '../../components/PostCard.astro'
 import CategoryBadge from '../../components/CategoryBadge.astro'
+import { recentBlogPosts } from '../../lib/utils'
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog')
+  const posts = await getCollection('blog', (post) => !post.data.draft)
+  const recentPosts = recentBlogPosts(posts, {})
+
   return posts.map((post) => ({
     params: { slug: post.slug },
-    props: { post, posts },
+    props: { post, recentPosts },
   }))
 }
 
-const { post, posts } = Astro.props
-const { title, date, image, author, tags } = post.data
+const { post, recentPosts } = Astro.props
+const { title, publishedDate, image, author, tags } = post.data
 const { Content } = await post.render()
 ---
 
@@ -23,7 +26,12 @@ const { Content } = await post.render()
   <div class='grid grid-cols-3 gap-x-8 pb-8'>
     <div class='col-span-3 lg:col-span-2'>
       <span class='font-semibold text-sm text-purple-700'
-        >{author} • {date}</span
+        >{author} • {
+          new Date(publishedDate).toLocaleDateString('en-US', {
+            dateStyle: 'medium',
+            timeZone: 'UTC',
+          })
+        }</span
       >
       <h1 class='text-4xl font-bold pb-8 pt-4'>{title}</h1>
       <Image
@@ -47,7 +55,7 @@ const { Content } = await post.render()
     <div class='hidden lg:block lg:col-span-1'>
       <h2 class='font-semibold text-2xl pb-8'>Recent blog posts</h2>
       <div class='flex flex-col gap-8'>
-        {posts.slice(0, 4).map((post) => <PostCard post={post} />)}
+        {recentPosts.map((post) => <PostCard post={post} />)}
       </div>
     </div>
   </div>
