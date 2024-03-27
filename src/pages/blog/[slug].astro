@@ -4,6 +4,7 @@ import { getCollection } from 'astro:content'
 
 import Layout from '../../layouts/Layout.astro'
 import PostCard from '../../components/PostCard.astro'
+import CategoryBadge from '../../components/CategoryBadge.astro'
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog')
@@ -14,7 +15,7 @@ export async function getStaticPaths() {
 }
 
 const { post, posts } = Astro.props
-const { title, date, image, author, category } = post.data
+const { title, date, image, author, tags } = post.data
 const { Content } = await post.render()
 ---
 
@@ -39,21 +40,7 @@ const { Content } = await post.render()
       </div>
 
       <div class='flex items-center flex-wrap gap-2'>
-        <p
-          class='text-purple-500 font-medium text-sm rounded-full bg-purple-50 dark:bg-purple-100 px-2.5 py-0.5'
-        >
-          Leadership
-        </p>
-        <p
-          class='text-cyan-500 font-medium text-sm rounded-full bg-cyan-50 dark:bg-cyan-50 px-2.5 py-0.5'
-        >
-          Leadership
-        </p>
-        <p
-          class='text-orange-500 font-medium text-sm rounded-full bg-orange-50 dark:bg-orange-50 px-2.5 py-0.5'
-        >
-          Frameworks
-        </p>
+        {tags.map((c: any) => <CategoryBadge label={c} />)}
       </div>
     </div>
 
