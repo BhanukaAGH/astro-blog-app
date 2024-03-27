@@ -25,14 +25,14 @@ const { pathname } = Astro.url
   <div class='w-full border-y border-black dark:border-white'>
     {
       pathname === '/' && (
-        <h1 class='text-[18vw] md:text-[19vw] lg:text-[18vw] xl:text-[17vw] 2xl:text-[14vw] leading-none font-bold text-center -translate-y-1 sm:-translate-y-2 lg:-translate-y-4 pointer-events-none'>
+        <h1 class='text-[17vw] md:text-[18vw] lg:text-[18vw] xl:text-[16vw] 2xl:text-[13vw] leading-none font-bold text-center  sm:-translate-y-1 xl:-translate-y-2 pointer-events-none'>
           THE BLOG
         </h1>
       )
     }
     {
       pathname.includes('/about') && (
-        <h1 class='text-[17vw] md:text-[18vw] lg:text-[17vw] xl:text-[16vw] 2xl:text-[12vw] leading-none font-bold text-center -translate-y-1 sm:-translate-y-2 lg:-translate-y-4 pointer-events-none'>
+        <h1 class='text-[17vw] md:text-[17vw] lg:text-[17vw] xl:text-[16vw] 2xl:text-[12vw] leading-none font-bold text-center sm:-translate-y-1 xl:-translate-y-2 pointer-events-none'>
           JOHN DOE
         </h1>
       )
