@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout title='Page Not Found'>
+  <div
+    class='flex items-center justify-center h-[calc(100vh-238px)] sm:h-[calc(100vh-206px)] lg:h-[calc(100vh-222px)] overflow-hidden'
+  >
+    <div class='relative flex flex-col items-center gap-4 max-w-xl'>
+      <div
+        class='absolute -top-[50%] inset-x-0 h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))] -z-10'
+      >
+      </div>
+
+      <h1 class='text-5xl md:text-7xl leading-none font-bold'>Lost in Space</h1>
+      <div class='text-center pb-3'>
+        <h1 class='text-xl text-neutral-500 dark:text-neutral-400'>
+          {
+            `Whoops! You broke the Internet. Don\’t worry, we\’ll put it back together.`
+          }
+        </h1>
+      </div>
+      <a
+        href='/'
+        class='px-4 py-2 border font-medium bg-white text-black hover:bg-white/80 flex items-center justify-center rounded-md'
+        >Take me Home</a
+      >
+    </div>
+  </div>
+</Layout>

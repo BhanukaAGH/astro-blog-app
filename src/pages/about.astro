@@ -1,15 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro'
 
-import profileImage from '../assets/profile.png'
 import { Image } from 'astro:assets'
 ---
 
 <Layout title='Blog - About'>
   <div class='flex flex-col gap-y-8 py-7'>
     <Image
-      src={profileImage}
+      src='/images/profile.png'
       alt='profile'
+      width={1216}
+      height={556}
       class='aspect-[2.18] w-full object-cover'
     />
 
