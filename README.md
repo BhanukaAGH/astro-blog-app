@@ -49,3 +49,19 @@ pnpm dev
 ```
 
 Access the blog app in your browser at `http://localhost:4321`.
+
+## Managing Posts
+
+After setting up the blog app locally, you can manage posts by accessing the Keystatic Admin UI. Here's how:
+
+1. Ensure your local development server is running. If not, start it by running:
+
+    ```bash
+    pnpm dev
+    ```
+
+2. Open your browser and navigate to `http://localhost:4321/keystatic`.
+
+3. You'll be directed to the Keystatic Admin UI, where you can create, edit, and manage your blog posts with ease.
+
+Feel free to create new posts, edit existing ones, or organize your content as needed directly through the Keystatic CMS integration.
