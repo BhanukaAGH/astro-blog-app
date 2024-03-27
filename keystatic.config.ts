@@ -2,7 +2,11 @@ import { config, fields, collection } from '@keystatic/core'
 
 export default config({
   storage: {
-    kind: 'local',
+    kind: 'github',
+    repo: {
+      name: 'astro-blog-app',
+      owner: 'BhanukaAGH',
+    },
   },
 
   collections: {
