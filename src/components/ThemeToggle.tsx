@@ -33,5 +33,3 @@ const ThemeToggle = () => {
 }
 
 export default ThemeToggle
-
-// {theme === 'light' ? '🌙' : '🌞'}

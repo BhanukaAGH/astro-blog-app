@@ -65,19 +65,27 @@ const { pathname } = Astro.url
 </header>
 
 <script>
-  let close = document.querySelector('#close-icon')
-  let mobileHeader = document.querySelector('#mobile-header')
-  let mobileMenu = document.querySelector('#mobile-menu')
+  function attachEventListeners() {
+    let close = document.querySelector('#close-icon')
+    let mobileHeader = document.querySelector('#mobile-header')
+    let mobileMenu = document.querySelector('#mobile-menu')
 
-  mobileMenu?.addEventListener('click', () => {
-    document.documentElement.classList.add('overflow-hidden')
-    mobileHeader?.classList.remove('hidden')
-    mobileHeader?.classList.add('absolute')
-  })
+    mobileMenu?.addEventListener('click', () => {
+      document.documentElement.classList.add('overflow-hidden')
+      mobileHeader?.classList.remove('hidden')
+      mobileHeader?.classList.add('absolute')
+    })
 
-  close?.addEventListener('click', () => {
-    document.documentElement.classList.remove('overflow-hidden')
-    mobileHeader?.classList.remove('absolute')
-    mobileHeader?.classList.add('hidden')
-  })
+    close?.addEventListener('click', () => {
+      document.documentElement.classList.remove('overflow-hidden')
+      mobileHeader?.classList.remove('absolute')
+      mobileHeader?.classList.add('hidden')
+    })
+  }
+
+  // Run the function immediately
+  attachEventListeners()
+
+  // Also run the function after Astro swaps the content
+  document.addEventListener('astro:after-swap', attachEventListeners)
 </script>
