@@ -19,79 +19,154 @@ tags:
   - Frameworks
   - Leadership
 ---
+Organizing files and directories within a React project is crucial for maintainability, scalability, and ease of navigation. This article explores the general architecture and folder structures across different scales of React projects, providing clear demonstrations for each level.
 
-Organizing files and directories within a React project is crucial for
-maintainability, scalability, and ease of navigation. This article explores the
-general architecture and folder structures across different scales of React
-projects, providing clear demonstrations for each level. ## Level 1️⃣: Grouping
-by "File Types" This structure is characterized by its simplicity - grouping
-files by their type:\ ``` └── src/ ├── actions/ ├── assets/ ├── components/ │
-├── Dialog.tsx │ ├── DistributionGraph.tsx │ ├── Employees.tsx │ ├──
-PaymentForm.tsx │ └── HoorayDialog.tsx ├── helpers/ ├── reducers/ ├── storage/
-├── store/ └── utils/ ``` - **Project Size**: Small to Medium - **Advantages**:
-Simple & straightforward - **Disadvantages**: - Will inflate quickly and become
-hard to maintain - No separation of business concerns Let's say you have a lot
-of code revolving around payment. One day the whole business changes or is no
-longer needed, how easy is it to replace or remove it? With this folder
-structure, you'll have to go through&nbsp;*every folder and the files inside
-it*&nbsp;to make the necessary changes. And if the project keeps growing larger,
-it'll soon grow into a maintenance hell that will only get worse over time. ##
-Level 2️⃣: Grouping by "File Types" and Features As projects grow, the "Level 2"
-structure introduces grouping by feature within each type:\ ``` └── src/ ├──
-actions/ ├── assets/ ├── components/ │ ├── auth/ │ │ └── SignUpForm.tsx │ ├──
-payment/ │ │ └── PaymentForm.tsx │ ├── common/ │ │ └── Button.tsx │ └──
-employees/ │ ├── EmployeeList.tsx │ └── EmployeeSummary.tsx ├── helpers/ ├──
-reducers/ └── services/ ``` - **Project Size**: Medium to Large -
-**Advantages**: - Simple & straightforward - Stuff are grouped by features -
-**Disadvantages**: - Logic related to a feature is still spread across multiple
-folder types Now let's come back to the problem statement where the payment
-module needs to be modified or removed. With this structure, it's a lot easier
-to do that now. The "Level 2" folder structure is the one that I'd recommend if
-you don't know what to choose. ## Level 3️⃣: Grouping by Features/Modules For
-larger projects, the "Level 3" structure offers a highly modular approach,
-defining clear boundaries for different aspects of the application within each
-module:\ ``` └── src/ ├── assets/ ├── modules/ | ├── core/ │ │ ├── components/ │
-│ ├── design-system/ │ │ ├── hooks/ │ │ ├── persistence/ │ │ └── utils/ │ ├──
-payment/ │ │ ├── components/ │ │ ├── hooks/ │ │ ├── utils/ │ │ └── services/ │
-├── auth/ │ │ ├── components/ │ │ ├── hooks/ │ │ ├── utils/ │ │ └── services/ │
-└── employees/ │ ├── components/ │ │ ├── EmployeeList.tsx │ │ └──
-EmployeeSummary.tsx │ ├── design-system/ │ ├── hooks/ │ ├── lib/ │ └── utils/
-└── ``` - **Project Size**: Large and Complex - **Advantages**: - Stuff are
-clearly grouped by features/modules - Features/Modules are clear representations
-of objects in the real world - **Disadvantages**: - You'll have to be well-aware
-of the business logic to make the right grouping decisions With this, if you are
-to remove or modify the payment logic, you'll know right away where to start. ##
-Give Consistent Meanings to Folder Names Regardless of the structure level,
-certain folder names should carry specific meanings. What a folder name means
-may vary based on your preferences or the project's conventions. Here's what I
-usually think about folder names: ### UI Components - **components**: React
-components - the main UI building blocks. - **design-system**: Fundamental UI
-elements and patterns based on the design system. - **icons**: SVG icons that
-are meant to be used inline. ### React Specific - **hooks**: Custom React hooks
-for shared logic. - **hocs**: React Higher-order Components. -
-**contexts**/**providers**: Contains React Contexts and Providers. ### Utilities
-& External Integrations - **utils**: Utilities for universal logic that is not
-related to business logic or any technologies, e.g. string manipulations,
-mathematic calculations, etc. - **lib**: Utilities that are related to certain
-technologies, e.g. DOM manipulations, HTML-related logic, localStorage,
-IndexedDB, etc. - **plugins**: Third-party plugins (e.g. i18n, Sentry, etc.) ###
-Business Logic - **services**: Encapsulates main business logic. - **helpers**:
-Provides business-specific utilities. ### Styles - **styles**: Contains (global)
-CSS or CSS-in-JS styles. ### TypeScript and Configurations - **types**: For
-general TypeScript types, enums and interfaces. - **configs**: Configs for the
-application (e.g. environment variables) - **constants**: Constant, unchanged
-values (e.g.&nbsp;`export const MINUTES_PER_HOUR = 60`). ### Server
-Communication - **api**: For logic that communicates with the server(s). -
-**graphql**: GraphQL-specific code. ### State Management - **states**/**store**:
-Global state management logic (Zustand, Valtio, Jotai, etc.) -
-**reducers**,&nbsp;**store**,&nbsp;**actions**,&nbsp;**selectors**:
-Redux-specific logic ### Routing - **routes**/**router**: Defining routes (if
-you're using React Router or the like). - **pages**: Defining entry-point
-components for pages. ### Testing - **tests**: Unit tests and other kinds of
-tests for your code. ## Conclusion Choosing the right folder structure in React
-projects is essential and should be based on the project's size and complexity.
-While "Level 1" may suffice for small projects, "Level 2" and "Level 3" offer
-more organized and modular structures for medium and large projects. Personally,
-I'd often recommend the "Level 2" folder structure. Also, Understanding common
-folder names helps maintain a consistent and intuitive architecture across React
-applications.
+#### **Level 1️⃣: Grouping by "File Types"**
+
+This structure is characterized by its simplicity - grouping files by their type:
+
+```
+└── src/
+    ├── assets/
+    ├── api/
+    ├── configs/
+    ├── components/
+    │   ├── SignUpForm.tsx
+    │   ├── Employees.tsx
+    │   ├── PaymentForm.tsx
+    │   └── Button.tsx
+    ├── hooks/
+    │   ├── usePayment.ts
+    │   ├── useUpdateEmployee.ts
+    │   ├── useEmployees.ts
+    │   └── useAuth.tsx
+    ├── lib/
+    ├── services/
+    ├── states/
+    └── utils/
+```
+
+- **Project Size**: Small to Medium
+- **Advantages**: Simple & straightforward
+- **Disadvantages**: - Will inflate quickly and become hard to maintain
+  - No separation of business concerns
+
+Let's say you have a lot of code revolving around payment. One day the whole business changes or is no longer needed, how easy is it to replace or remove it? With this folder structure, you'll have to go through&nbsp;*every folder and the files inside it*&nbsp;to make the necessary changes. And if the project keeps growing larger, it'll soon grow into a maintenance hell that will only get worse over time.
+
+#### Level 2️⃣: Grouping by "File Types" and Features
+
+As projects grow, the "Level 2" structure introduces grouping by feature within each type:
+
+```
+└── src/
+    ├── assets/
+    ├── api/
+    ├── configs/
+    ├── components/
+    │   ├── auth/
+    │   │   └── SignUpForm.tsx
+    │   ├── payment/
+    │   │   └── PaymentForm.tsx
+    │   ├── common/
+    │   │   └── Button.tsx
+    │   └── employees/
+    │       ├── EmployeeList.tsx
+    │       └── EmployeeSummary.tsx
+    ├── hooks/
+    │   ├── auth/
+    │   │   └── useAuth.ts
+    │   ├── payment/
+    │   │   └── usePayment.ts
+    │   └── employees/
+    │       ├── useEmployees.ts
+    │       └── useUpdateEmployee.ts
+    ├── lib/
+    ├── services/
+    ├── states/
+    └── utils/
+```
+
+- **Project Size**: Medium to Large
+- **Advantages**:
+  - Simple & straightforward
+  - Stuff are grouped by features
+- **Disadvantages**:
+  - Logic related to a feature is still spread across multiple folder types
+
+Now let's come back to the problem statement where the payment module needs to be modified or removed. With this structure, it's a lot easier to do that now. The "Level 2" folder structure is the one that I'd recommend if you don't know what to choose.
+
+#### Level 3️⃣: Grouping by Features/Modules
+
+For larger projects, the "Level 3" structure offers a highly modular approach, defining clear boundaries for different aspects of the application within each module:
+
+```
+└── src/
+    ├── assets/
+    ├── modules/
+    |   ├── core/
+    │   │   ├── components/
+    │   │   ├── design-system/
+    │   │   │   └── Button.tsx
+    │   │   ├── hooks/
+    │   │   ├── lib/
+    │   │   └── utils/
+    │   ├── payment/
+    │   │   ├── components/
+    │   │   │   └── PaymentForm.tsx
+    │   │   ├── hooks/
+    │   │   │   └── usePayment.ts
+    │   │   ├── lib/
+    │   │   ├── services/
+    │   │   ├── states/
+    │   │   └── utils/
+    │   ├── auth/
+    │   │   ├── components/
+    │   │   │   └── SignUpForm.tsx
+    │   │   ├── hooks/
+    │   │   │   └── useAuth.ts
+    │   │   ├── lib/
+    │   │   ├── services/
+    │   │   ├── states/
+    │   │   └── utils/
+    │   └── employees/
+    │       ├── components/
+    │       │   ├── EmployeeList.tsx
+    │       │   └── EmployeeSummary.tsx
+    │       ├── hooks/
+    │       │   ├── useEmployees.ts
+    │       │   └── useUpdateEmployee.ts
+    │       ├── services/
+    │       ├── states/
+    │       └── utils/
+    └── ...
+```
+
+- **Project Size**: Large and Complex
+- **Advantages**:
+  - Stuff are clearly grouped by features/modules
+  - Features/Modules are clear representations of objects in the real world
+- **Disadvantages**:
+  - You'll have to be well-aware of the business logic to make the right grouping decisions
+
+With this, if you are to remove or modify the payment logic, you'll know right away where to start.
+
+#### Give Consistent Meanings to Folder Names
+
+Regardless of the structure level, certain folder names should carry specific meanings. What a folder name means may vary based on your preferences or the project's conventions.
+
+Here's what I usually think about folder names:
+
+##### UI Components
+
+- **components**: React components
+  - the main UI building blocks.
+- **design-system**: Fundamental UI elements and patterns based on the design system.
+- **icons**: SVG icons that are meant to be used inline.
+
+##### React Specific
+
+- **hooks**: Custom React hooks for shared logic.
+- **hocs**: React Higher-order Components.
+- **contexts**/**providers**: Contains React Contexts and Providers.
+
+[https://dev.to/itswillt/folder-structures-in-react-projects-3dp8](https://dev.to/itswillt/folder-structures-in-react-projects-3dp8)
